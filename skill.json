@@ -1,0 +1,56 @@
+{
+  "name": "genpark-agentic-commerce-edi-810-to-820-remittance-advice-reconciler-skill",
+  "version": "1.0.0",
+  "description": "B2B EDI 810 invoice to EDI 820 payment order/remittance advice auto-match and line-item short-pay auditor.",
+  "category": "agentic_commerce",
+  "author": "GenPark AI",
+  "website": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "main": "skills.py",
+  "tools": [
+    {
+      "name": "reconcile_edi_810_820_remittance",
+      "description": "B2B EDI 810 invoice to EDI 820 payment order/remittance advice auto-match and line-item short-pay auditor.",
+      "sample_input": {
+        "invoices": [
+          {
+            "invoice_number": "INV-1001",
+            "amount": 15400.0
+          },
+          {
+            "invoice_number": "INV-1002",
+            "amount": 8250.5
+          },
+          {
+            "invoice_number": "INV-1003",
+            "amount": 21000.0
+          }
+        ],
+        "payments": [
+          {
+            "invoice_number": "INV-1001",
+            "paid_amount": 15400.0,
+            "deductions": []
+          },
+          {
+            "invoice_number": "INV-1002",
+            "paid_amount": 7950.5,
+            "deductions": [
+              {
+                "code": "01",
+                "description": "Pricing Discrepancy",
+                "amount": 300.0
+              }
+            ]
+          },
+          {
+            "invoice_number": "INV-1003",
+            "paid_amount": 21000.0,
+            "deductions": []
+          }
+        ],
+        "tolerance_cents": 5
+      }
+    }
+  ]
+}
